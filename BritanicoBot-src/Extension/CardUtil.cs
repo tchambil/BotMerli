@@ -21,9 +21,9 @@ namespace SimpleEchoBot.Extension
                 HeroCard card = new HeroCard()
                 {
                     Title = item.Nombres,
-                    Subtitle = (item.Puesto == null ? "" : item.Puesto) + "-" + (item.Centro == null ? "" : item.Centro),
-                    Text = "Código: " + (item.Codigo == null ? "" : item.Codigo),
-                    //Text = "Código: " + item.Codigo + "\n\n\u200CEmail: " + item.EmailAddress + "\n\n\u200CPhone/Anexo: " + item.Phone,
+                    Subtitle = (item.Puesto == null ? "" : item.Puesto) + "\n\n\u200C" + (item.Centro == null ? "" : item.Centro),
+                    // Text = "Código: " + (item.Codigo == null ? "\n\n\u200C" : item.Codigo),
+                    Text = "Email: " + (item.Email == null ? "" : item.Email),
                     Images = cardImages
                 };
                 reply.Attachments.Add(card.ToAttachment());

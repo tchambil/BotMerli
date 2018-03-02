@@ -14,6 +14,6 @@ namespace SimpleEchoBot.Model
         public string Centro{ get; set; }
         public string Nombres{ get; set; }
         public string Phone { get; set; }
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
     }
 }
