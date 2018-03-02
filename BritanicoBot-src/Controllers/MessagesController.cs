@@ -82,11 +82,11 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else if (message.Type == ActivityTypes.Typing)
             {
-                ConnectorClient connector = new ConnectorClient(new Uri(message.ServiceUrl));
-                Activity reply = message.CreateReply();
-                reply.Type = ActivityTypes.Typing;
-                reply.Text = "...";
-                connector.Conversations.ReplyToActivityAsync(reply);
+                //ConnectorClient connector = new ConnectorClient(new Uri(message.ServiceUrl));
+                //Activity reply = message.CreateReply();
+                //reply.Type = ActivityTypes.Typing;
+                //reply.Text = "...";
+                //connector.Conversations.ReplyToActivityAsync(reply);
                 // Handle knowing tha the user is typing
             }
             else if (message.Type == ActivityTypes.Ping)
