@@ -85,7 +85,7 @@ namespace SimpleEchoBot.Extension
 
             HeroCard card = new HeroCard()
             {
-                Title = "Tenemos la siguiente información:",
+                Title = "Te presento las siguientes opciones:",
 
                 Buttons = new List<CardAction>()
                 {

@@ -59,7 +59,7 @@ namespace SimpleEchoBot.Extension
                 Images = cardImages,
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.DownloadFile, "Descargar", value:"https://www.marquam.com/Documents/Microsoft%20Bot%20Framework%20Documentation.pdf"), 
+                    new CardAction(ActionTypes.DownloadFile, "Ver", value:"https://botteo.herokuapp.com/files/BoletaPago.pdf"), 
                 }
             }; 
 

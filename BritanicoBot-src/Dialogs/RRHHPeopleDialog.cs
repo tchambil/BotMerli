@@ -26,16 +26,16 @@ namespace SimpleEchoBot.Dialogs
       
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Para obtener información de Recursos Humanos necesitamos sus credenciales.");
+            //await context.PostAsync("Para obtener información ingresa tu código de empleado.");
 
-            PromptDialog.Text(context, ResumePeopleUserName, "Por favor, ingrese su código asigando en la institución:");
+            PromptDialog.Text(context, ResumePeopleUserName, "Para obtener información, ingresa tu código de empleado:");
              
         }
         private async Task ResumePeopleUserName(IDialogContext context, IAwaitable<string> result)
         {
             var answer = await result;
             user.UserOrEmailAdrees = answer;
-            PromptDialog.Text(context, GetInformationRRHH, "Ingrese su DNI:");
+            PromptDialog.Text(context, GetInformationRRHH, "Ahora, ingresa tu DNI:");
         }
        
         private async Task GetInformationRRHH(IDialogContext context, IAwaitable<string> result)
@@ -52,15 +52,15 @@ namespace SimpleEchoBot.Dialogs
                     message.Attachments = new List<Attachment>();
                     message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                     message.Attachments.Add(SettingsCardDialog.CardRRHH().ToAttachment());
-                    message.Text = $"Hola, "+ login.Nombres+" estas en la sección Recursos Humanos";
+                    message.Text = $"Hola, "+ login.Nombres;
                     await context.PostAsync(message);
                     context.Wait(MessageRecievedAsync);
                 }
                 else
                 {
 
-                    await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "Los datos ingresados no son correctos. Por favor intente de nuevo", user.UserOrEmailAdrees));
-                    PromptDialog.Text(context, ResumePeopleUserName, "Por favor, ingrese el usuario con el cual inicia sesión en su computador:");
+                      await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "Tus datos no son correctos. Por favor intenta nuevamente", user.UserOrEmailAdrees));
+                    PromptDialog.Text(context, ResumePeopleUserName, "Ingresa nuevamente tu código de empleado:");
                 }
             }
             catch (Exception e)
@@ -115,7 +115,7 @@ namespace SimpleEchoBot.Dialogs
         }
         private Task SelectedConfirm(IDialogContext context)
         {
-            PromptDialog.Confirm(context, Confirmed, "¿Desea realizar otra consulta?");
+            PromptDialog.Confirm(context, Confirmed, "¿Deseas realizar otra consulta?");
             return Task.CompletedTask;
         }
 
