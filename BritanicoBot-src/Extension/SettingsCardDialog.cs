@@ -151,8 +151,8 @@ namespace SimpleEchoBot.Extension
 
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.OpenUrl, PESistemas, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=1"),
-                    new CardAction(ActionTypes.OpenUrl, PEMantenimiento, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=2"),
+                    new CardAction(ActionTypes.OpenUrl, PESistemas, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=2"),
+                    new CardAction(ActionTypes.OpenUrl, PEMantenimiento, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=1"),
                     new CardAction(ActionTypes.OpenUrl, PEElearnig, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=3"),
 
                 }
