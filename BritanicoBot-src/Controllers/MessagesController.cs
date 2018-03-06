@@ -25,7 +25,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
         {
             // check if activity is of type message
-            if (activity != null && activity.GetActivityType() == ActivityTypes.Event)
+            if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
                 Activity isTypingReply = activity.CreateReply();
@@ -50,6 +50,10 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
          
             else if (message.Type == ActivityTypes.ConversationUpdate)
             {
+               
+            }
+            else if (message.Type == ActivityTypes.ContactRelationUpdate)
+            {
                 IConversationUpdateActivity update = message;
                 var client = new ConnectorClient(new Uri(message.ServiceUrl), new MicrosoftAppCredentials());
                 if (update.MembersAdded != null && update.MembersAdded.Any())
@@ -58,28 +62,23 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     {
                         if (newMember.Id != message.Recipient.Id)
                         {
-                            //    var init = new List<Attachment>()
-                            //   {
-                            //        SettingsCardDialog.CardIntranet().ToAttachment(),
-                            //        SettingsCardDialog.CardInfColaborador().ToAttachment(),
-                            //        SettingsCardDialog.CardSolucionesTI().ToAttachment(),
-                            //};
+                            var init = new List<Attachment>()
+                               {
+                                    SettingsCardDialog.CardIntranet().ToAttachment(),
+                                    SettingsCardDialog.CardInfColaborador().ToAttachment(),
+                                    SettingsCardDialog.CardSolucionesTI().ToAttachment(),
+                            };
 
 
                             var reply = message.CreateReply();
                             reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.";
-                            //    //reply = message.CreateReply();
-                            //    reply.Attachments = init;
-                            //    reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                            //reply = message.CreateReply();
+                            reply.Attachments = init;
+                            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                             client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
                 }
-            }
-            else if (message.Type == ActivityTypes.ContactRelationUpdate)
-            {
-                // Handle add/remove from contact lists
-                // Activity.From + Activity.Action represent what happened
             }
             else if (message.Type == ActivityTypes.Typing)
             {
