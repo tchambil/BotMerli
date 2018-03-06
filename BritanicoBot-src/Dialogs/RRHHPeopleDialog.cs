@@ -124,8 +124,7 @@ namespace SimpleEchoBot.Dialogs
                     switch (CategoryName.Text)
                     {
                         case SettingsCardDialog.RRHHHolidays:
-                            CardUtil.ShowRRHHHolidaysCard(CategoryName, holiday);
-                           // await SelectedRRHHHolidays(context);
+                            CardUtil.ShowRRHHHolidaysCard(CategoryName, holiday);                       
                             Thread.Sleep(4000);
                              await SelectedConfirm(context);
                             break;
@@ -156,20 +155,7 @@ namespace SimpleEchoBot.Dialogs
             }
          //   context.Done<object>(null);
         }
-        private async Task SelectedRRHHHolidays(IDialogContext context)
-        {
-            var message = context.MakeMessage();
-            //message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            //List<CardImage> cardImages = new List<CardImage>();
-            //HeroCard card = new HeroCard()
-            //{
-            //    Text = "Ud. tiene " + input.Cantidad + " días de vacaciones disponibles",
-            //    Images = cardImages
-            //};
-            //message.Attachments.Add(card.ToAttachment());
-            message.Text = "Ud. tiene " + 1222 + " días de vacaciones disponibles.";
-            await context.PostAsync(message);
-        }
+       
         private async Task SelectedConfirm(IDialogContext context)
         {
             PromptDialog.Confirm(context, Confirmed, "¿Deseas realizar otra consulta?");
