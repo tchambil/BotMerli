@@ -43,7 +43,8 @@ namespace SimpleEchoBot.Dialogs
                         context.Call(new ResetPasswordDialog(), ResumeAfterOptionDialog);
                         break; 
                     default:
-                        await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));                        
+                        await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
+                        await StartAsync(context);
                         break;
 
                 } 

@@ -217,7 +217,7 @@ namespace SimpleEchoBot.Dialogs
             var optionSelected = await result;
             switch (optionSelected)
             {
-                case SettingsCardDialog.OPPcPrint:                                
+                case SettingsCardDialog.OPPcPrint:
                     message.Attachments.Add(SettingsCardDialog.CardPCPrintOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
@@ -258,6 +258,11 @@ namespace SimpleEchoBot.Dialogs
                     Thread.Sleep(4000);
                     await SelectedConfirmTI(context);
                     break;
+                default:
+                    await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", optionSelected ));
+                 await SelectedITOptionsk(context);
+                    break;
+               
             }
         }
         private async Task CardPetitions(IDialogContext context)

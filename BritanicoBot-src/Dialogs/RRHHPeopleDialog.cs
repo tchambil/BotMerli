@@ -125,17 +125,19 @@ namespace SimpleEchoBot.Dialogs
                     {
                         case SettingsCardDialog.RRHHHolidays:
                             CardUtil.ShowRRHHHolidaysCard(CategoryName, holiday);
+                           // await SelectedRRHHHolidays(context);
                             Thread.Sleep(4000);
-                          //  await SelectedConfirm(context);
+                             await SelectedConfirm(context);
                             break;
                         case SettingsCardDialog.RRHHvoucher:
                             CardUtil.ShowRRHHvoucherCard(CategoryName, holiday);
                             Thread.Sleep(4000);
-                           // await SelectedConfirm(context);
+                             await SelectedConfirm(context);
                             break;
                   
                         default:
                             await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
+                            await StartAsync(context);
                             break;
 
                     }
@@ -152,12 +154,26 @@ namespace SimpleEchoBot.Dialogs
             {
                 Debug.WriteLine($"Error when searching for people: {e.Message}");
             }
-            context.Done<object>(null);
+         //   context.Done<object>(null);
         }
-        private Task SelectedConfirm(IDialogContext context)
+        private async Task SelectedRRHHHolidays(IDialogContext context)
+        {
+            var message = context.MakeMessage();
+            //message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            //List<CardImage> cardImages = new List<CardImage>();
+            //HeroCard card = new HeroCard()
+            //{
+            //    Text = "Ud. tiene " + input.Cantidad + " días de vacaciones disponibles",
+            //    Images = cardImages
+            //};
+            //message.Attachments.Add(card.ToAttachment());
+            message.Text = "Ud. tiene " + 1222 + " días de vacaciones disponibles.";
+            await context.PostAsync(message);
+        }
+        private async Task SelectedConfirm(IDialogContext context)
         {
             PromptDialog.Confirm(context, Confirmed, "¿Deseas realizar otra consulta?");
-            return Task.CompletedTask;
+          //  return Task.CompletedTask;
         }
 
         public async Task Confirmed(IDialogContext context, IAwaitable<bool> argument)
