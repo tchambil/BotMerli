@@ -17,7 +17,7 @@ namespace SimpleEchoBot.Dialogs
     {
         private UserLogin user;
         private People people;
-        private ResultAutenticate login;
+       
         public RRHHPeopleDialog(UserLogin _user, People _people)
         {
             user = _user;
@@ -27,8 +27,15 @@ namespace SimpleEchoBot.Dialogs
         public async Task StartAsync(IDialogContext context)
         {
             //await context.PostAsync("Para obtener información ingresa tu código de empleado.");
-
-            PromptDialog.Text(context, ResumePeopleUserName, "Para obtener información, ingresa tu código de empleado:");
+            if (MainDialog.login == null)
+            {
+                PromptDialog.Text(context, ResumePeopleUserName, "Para obtener información, ingresa tu código de empleado:");
+            }
+            else
+            {
+                 
+                await GetInformationRRHHSign(context);
+            }               
              
         }
         private async Task ResumePeopleUserName(IDialogContext context, IAwaitable<string> result)
@@ -37,22 +44,56 @@ namespace SimpleEchoBot.Dialogs
             user.UserOrEmailAdrees = answer;
             PromptDialog.Text(context, GetInformationRRHH, "Ahora, ingresa tu DNI:");
         }
-       
-        private async Task GetInformationRRHH(IDialogContext context, IAwaitable<string> result)
-        {
-            var answer = await result;
-            user.Password = answer;
+        private async Task GetInformationRRHHSign(IDialogContext context)
+        { 
             try
             {
                 PeopeAppService searchService = new PeopeAppService();
-                login = await searchService.Autenticate(user);             
-                if (login.Result)
+                if (MainDialog.login == null)
+                {
+                    await StartAsync(context);
+                }
+                if (MainDialog.login.Result)
                 {
                     var message = context.MakeMessage();
                     message.Attachments = new List<Attachment>();
                     message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                     message.Attachments.Add(SettingsCardDialog.CardRRHH().ToAttachment());
-                    message.Text = $"Hola, "+ login.Nombres;
+                    message.Text = $"Hola, " + MainDialog.login.Nombres;
+                    await context.PostAsync(message);
+                    context.Wait(MessageRecievedAsync);
+                }
+                else
+                {
+
+                    await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "Tus datos no son correctos. Por favor intenta nuevamente", user.UserOrEmailAdrees));
+                    PromptDialog.Text(context, ResumePeopleUserName, "Ingresa nuevamente tu código de empleado:");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error when searching for people: {e.Message}");
+            }
+
+        }
+        private async Task GetInformationRRHH(IDialogContext context, IAwaitable<string> result)
+        {
+            var answer = await result;
+           
+            try
+            {
+                PeopeAppService searchService = new PeopeAppService();
+               
+                user.Password = answer;
+                MainDialog.login = await searchService.Autenticate(user);
+                              
+                if (MainDialog.login.Result)
+                {
+                    var message = context.MakeMessage();
+                    message.Attachments = new List<Attachment>();
+                    message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                    message.Attachments.Add(SettingsCardDialog.CardRRHH().ToAttachment());
+                    message.Text = $"Hola, " + MainDialog.login.Nombres;
                     await context.PostAsync(message);
                     context.Wait(MessageRecievedAsync);
                 }
@@ -76,8 +117,8 @@ namespace SimpleEchoBot.Dialogs
             try
             {
                 PeopeAppService searchService = new PeopeAppService();
-                Holiday holiday = await searchService.GetRRHHHolidays(login);
-                holiday.Nombres = login.Nombres;
+                Holiday holiday = await searchService.GetRRHHHolidays(MainDialog.login);
+                holiday.Nombres = MainDialog.login.Nombres;
                 if (CategoryName != null)
                 {
                     switch (CategoryName.Text)

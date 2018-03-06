@@ -8,12 +8,14 @@ using Microsoft.Bot.Connector;
 using System.Globalization;
 using SimpleEchoBot.Extension;
 using System.Threading;
+using SimpleEchoBot.Model;
 
 namespace SimpleEchoBot.Dialogs
 {
     [Serializable]
     public class MainDialog : IDialog<object>
     {
+        public static ResultAutenticate login;
         public async Task StartAsync(IDialogContext context)
         {
            // var message = context.MakeMessage();
@@ -59,7 +61,6 @@ namespace SimpleEchoBot.Dialogs
                 {
                     case SettingsCardDialog.InTDocsfrecuent: 
                         await CardDoscFrecuent(context);
-                        // await CardCarousel(context);
                         Thread.Sleep(4000);
                         await SelectedConfirm(context);
                         break;
@@ -110,12 +111,29 @@ namespace SimpleEchoBot.Dialogs
                 await this.ProcessMessageReceived(context, result);
             }
         }
+        private async Task SelectedConfirmTI(IDialogContext context)
+        {
+            PromptDialog.Confirm(context, ConfirmedTI, "¿Te puedo ayudar en algo mas?");
+        }
         private async Task SelectedConfirm(IDialogContext context)
         {
             PromptDialog.Confirm(context, Confirmed, "¿Te puedo ayudar en algo mas?");
 
         }
+        public async Task ConfirmedTI(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var reply = context.MakeMessage();
+            bool isCorrect = await argument;
+            if (isCorrect)
+            {
+                await SelectedITOptionsk(context);
+            }
+            else
+            {
+                context.Call(new ScoreDialog(), ResumeAfterOptionDialog);
 
+            }
+        }
         public async Task Confirmed(IDialogContext context, IAwaitable<bool> argument)
         {
             var reply = context.MakeMessage();
@@ -192,8 +210,7 @@ namespace SimpleEchoBot.Dialogs
             },
                 "¡CORRECTO...! Con éstas opciones podrás solucionar de manera rápida tu problema.");
 
-        }
-      
+        }      
         private async Task AfterMenuSelection(IDialogContext context, IAwaitable<string> result)
         {
             var message = context.MakeMessage();
@@ -204,13 +221,13 @@ namespace SimpleEchoBot.Dialogs
                     message.Attachments.Add(SettingsCardDialog.CardPCPrintOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 case SettingsCardDialog.OPConnectivity:
                     message.Attachments.Add(SettingsCardDialog.CardConnectivityOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 //case SettingsCardDialog.OPLogin:
                 //    message.Attachments.Add(SettingsCardDialog.CardLoginOptions().ToAttachment());
@@ -234,12 +251,12 @@ namespace SimpleEchoBot.Dialogs
                     message.Attachments.Add(SettingsCardDialog.CardEmailOutlookOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 case SettingsCardDialog.InTSearchDocuments:
                     await SelectedInTSearchDocuments(context);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
             }
         }

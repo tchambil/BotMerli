@@ -57,8 +57,8 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task ResumeAfterOptionDialog(IDialogContext context, IAwaitable<object> result)
         {
-            context.Done<object>(null);
-            
+            //context.Done<object>(null);
+            await StartAsync(context);
         }
     }
 }
