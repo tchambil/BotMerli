@@ -50,11 +50,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
          
             else if (message.Type == ActivityTypes.ConversationUpdate)
             {
-               
-            }
-            else if (message.Type == ActivityTypes.ContactRelationUpdate)
-            {
-                IConversationUpdateActivity update = message;
+               /* IConversationUpdateActivity update = message;
                 var client = new ConnectorClient(new Uri(message.ServiceUrl), new MicrosoftAppCredentials());
                 if (update.MembersAdded != null && update.MembersAdded.Any())
                 {
@@ -78,7 +74,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                             client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
-                }
+                }*/
+            }
+            else if (message.Type == ActivityTypes.ContactRelationUpdate)
+            {
+                // Handle add/remove from contact lists
+                // Activity.From + Activity.Action represent what happened
             }
             else if (message.Type == ActivityTypes.Typing)
             {

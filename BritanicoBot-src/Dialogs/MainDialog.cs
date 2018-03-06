@@ -18,12 +18,12 @@ namespace SimpleEchoBot.Dialogs
         public static ResultAutenticate login;
         public async Task StartAsync(IDialogContext context)
         {
-           // var message = context.MakeMessage();
-           // message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITANICO. Permíteme ayudarte en los siguientes temas:";
-           // await context.PostAsync(message);
+              var message = context.MakeMessage();
+             message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITANICO. Permíteme ayudarte en los siguientes temas:";
+             await context.PostAsync(message);
             //await  CardCarousel(context);
-           // context.Wait(ResumeAfter);
-            context.Wait(this.MessageReceivedAsync);
+             context.Wait(ResumeAfter);
+            //context.Wait(this.MessageReceivedAsync);
         }
         public async Task ResumeAfter(IDialogContext context, IAwaitable<object> result)
         {
