@@ -15,7 +15,7 @@ namespace SimpleEchoBot.Dialogs
     [Serializable]
     public class MainDialog : IDialog<object>
     {
-        public static ResultAutenticate login;
+        public ResultAutenticate login;
         public async Task StartAsync(IDialogContext context)
         {
               var message = context.MakeMessage();
