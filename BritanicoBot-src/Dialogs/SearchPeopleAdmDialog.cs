@@ -15,6 +15,7 @@ namespace SimpleEchoBot.Dialogs
     [Serializable]
     public class SearchPeopleAdmDialog : IDialog<object>
     {
+       
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("Indícame el nombre y apellidos de la persona:");

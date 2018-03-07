@@ -10,6 +10,7 @@ using System.Linq;
 using SimpleEchoBot.Dialogs;
 using System.Collections.Generic;
 using SimpleEchoBot.Extension;
+using SimpleEchoBot.Model;
 
 namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
@@ -24,6 +25,8 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
         [ResponseType(typeof(void))]
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
         {
+            
+        
             // check if activity is of type message
             if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
@@ -31,6 +34,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 Activity isTypingReply = activity.CreateReply();
                 isTypingReply.Type = ActivityTypes.Typing;
                 await connector.Conversations.ReplyToActivityAsync(isTypingReply);
+               
                 await Conversation.SendAsync(activity, () => new MainDialog());
             }
             else

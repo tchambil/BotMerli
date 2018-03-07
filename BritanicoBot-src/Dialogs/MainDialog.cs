@@ -15,10 +15,12 @@ namespace SimpleEchoBot.Dialogs
     [Serializable]
     public class MainDialog : IDialog<object>
     {
-        public ResultAutenticate login;
+               
         public async Task StartAsync(IDialogContext context)
         {
-              var message = context.MakeMessage();
+            Session.Codigo = null;
+            Session.Result = false;
+            var message = context.MakeMessage();
              message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITANICO. Permíteme ayudarte en los siguientes temas:";
              await context.PostAsync(message);
             //await  CardCarousel(context);
