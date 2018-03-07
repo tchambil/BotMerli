@@ -176,6 +176,8 @@ namespace SimpleEchoBot.Dialogs
             }
             else
             {
+                Session.Codigo = null;
+                Session.Result = false;
                 context.Done<object>(null);
               //  context.Call(new ScoreDialog(), ResumeAfterOptionDialog);
             }
