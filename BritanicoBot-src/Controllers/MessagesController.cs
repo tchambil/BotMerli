@@ -54,7 +54,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
          
             else if (message.Type == ActivityTypes.ConversationUpdate)
             {
-               /* IConversationUpdateActivity update = message;
+                IConversationUpdateActivity update = message;
                 var client = new ConnectorClient(new Uri(message.ServiceUrl), new MicrosoftAppCredentials());
                 if (update.MembersAdded != null && update.MembersAdded.Any())
                 {
@@ -63,22 +63,22 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                         if (newMember.Id != message.Recipient.Id)
                         {
                             var init = new List<Attachment>()
-                               {
-                                    SettingsCardDialog.CardIntranet().ToAttachment(),
-                                    SettingsCardDialog.CardInfColaborador().ToAttachment(),
-                                    SettingsCardDialog.CardSolucionesTI().ToAttachment(),
-                            };
+                                {
+                                     SettingsCardDialog.CardIntranet().ToAttachment(),
+                                     SettingsCardDialog.CardInfColaborador().ToAttachment(),
+                                     SettingsCardDialog.CardSolucionesTI().ToAttachment(),
+                             };
 
 
                             var reply = message.CreateReply();
                             reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.";
-                            //reply = message.CreateReply();
-                            reply.Attachments = init;
-                            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                           // reply = message.CreateReply();
+                           // reply.Attachments = init;
+                          //  reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                             client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
-                }*/
+                }
             }
             else if (message.Type == ActivityTypes.ContactRelationUpdate)
             {
