@@ -24,9 +24,9 @@ namespace SimpleEchoBot.Dialogs
                 {
                     
                     
-                    new CardAction(ActionTypes.ImBack, "3. Satisfecho", value:"3"),
+                    new CardAction(ActionTypes.ImBack, "1. Satisfecho", value:"1"),
                     new CardAction(ActionTypes.ImBack, "2. Neutral", value:"2"),
-                    new CardAction(ActionTypes.ImBack, "1. Insatisfecho", value:"1"),
+                    new CardAction(ActionTypes.ImBack, "3. Insatisfecho", value:"3"),
                                     }
             };             
            

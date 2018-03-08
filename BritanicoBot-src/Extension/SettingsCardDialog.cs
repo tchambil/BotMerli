@@ -40,7 +40,7 @@ namespace SimpleEchoBot.Extension
         public const string PEMantenimiento = "Mantenimiento";
         public const string PEElearnig = "E-LEARNING";
         //Options 
-        public const string OPPcPrint = "PC e Impresosa";
+        public const string OPPcPrint = "PC e IMPRESORA";
         public const string OPConnectivity = "Conectividad de red";
         public const string OPLogin = "Problemas de inicio de sesión";
         public const string OPPOS = "Problemas con el POS";
@@ -118,7 +118,7 @@ namespace SimpleEchoBot.Extension
         {
             HeroCard card = new HeroCard()
             {
-                Title = "SOLUCIONES DE TI",
+                Title = "SOLUCIONES RÁPIDAS DE TI",
                 Buttons = new List<CardAction>()
                 {
                     new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions)

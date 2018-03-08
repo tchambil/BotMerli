@@ -18,7 +18,7 @@ namespace SimpleEchoBot.Dialogs
        
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Indícame el nombre y apellidos de la persona:");
+            await context.PostAsync("Ingresa nombre y apellidos:");
             context.Wait(MessageRecievedAsync);
         }
         public virtual async Task MessageRecievedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
@@ -49,7 +49,7 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task SelectedConfirm(IDialogContext context)
         {
-            PromptDialog.Confirm(context, Confirmed, "¿Desea buscar a otro colaborador?");
+            PromptDialog.Confirm(context, Confirmed, "¿Desea buscar otro colaborador?");
 
         }
 

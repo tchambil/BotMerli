@@ -21,7 +21,7 @@ namespace SimpleEchoBot.Dialogs
             Session.Codigo = null;
             Session.Result = false;
             var message = context.MakeMessage();
-             message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITANICO. Permíteme ayudarte en los siguientes temas:";
+             message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
              await context.PostAsync(message);
             //await  CardCarousel(context);
              context.Wait(ResumeAfter);
@@ -119,7 +119,7 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task SelectedConfirm(IDialogContext context)
         {
-            PromptDialog.Confirm(context, Confirmed, "¿Te puedo ayudar en algo mas?");
+            PromptDialog.Confirm(context, Confirmed, "¿Te puedo ayudar en algo más?");
 
         }
         public async Task ConfirmedTI(IDialogContext context, IAwaitable<bool> argument)
@@ -162,7 +162,7 @@ namespace SimpleEchoBot.Dialogs
                 Images =cardImages
             };
             Attachment attachment = heroCard.ToAttachment();
-            reply.Attachments.Add(attachment);
+            //reply.Attachments.Add(attachment);
             reply.Attachments.Add(new Attachment()
             {
                 ContentUrl = "https://botteo.herokuapp.com/img/searchdocs.png",
@@ -175,7 +175,7 @@ namespace SimpleEchoBot.Dialogs
                 ContentType = "image/png",                
                 Name = "logo.png"
             });
-            reply.Text = $"¡MUY BIEN...! Dirígite al ícono de la llave en la parte superior derecha de la intranet y colocar el nombre del documento en la barra de búsqueda.";
+            reply.Text = $"¡MUY BIEN...! Dirígete al ícono de la llave en la parte superior derecha de la intranet y colocar el nombre del documento en la barra de búsqueda.";
             await context.PostAsync(reply);
          
         }
@@ -185,7 +185,7 @@ namespace SimpleEchoBot.Dialogs
             message.Attachments = new List<Attachment>();
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             message.Attachments.Add(SettingsCardDialog.CardHelpDesk().ToAttachment());
-            message.Text = $"¡GENIAL...! Con esta guía podrás realizar tus peticiones de manera mas sencilla.";
+            message.Text = $"¡GENIAL...! Con esta guía podrás realizar tus peticiones de manera más sencilla.";
             await context.PostAsync(message);
         }
         private async Task CardDoscFrecuent(IDialogContext context)
@@ -210,7 +210,7 @@ namespace SimpleEchoBot.Dialogs
                 SettingsCardDialog.OPEmailOutlook,
                
             },
-                "¡CORRECTO...! Con éstas opciones podrás solucionar de manera rápida tu problema.");
+                "¡CORRECTO...! Con estas opciones podrás solucionar de manera rápida tu problema.");
 
         }      
         private async Task AfterMenuSelection(IDialogContext context, IAwaitable<string> result)
