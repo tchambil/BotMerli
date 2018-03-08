@@ -71,11 +71,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
 
                             var reply = message.CreateReply();
-                            reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.";
-                           // reply = message.CreateReply();
+                            // reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.";
+                            reply.Text = "Iniciando con UserId:" + newMember.Id + " y UserName :" + newMember.Name;
+                            // reply = message.CreateReply();
                            // reply.Attachments = init;
                           //  reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                          //  client.Conversations.ReplyToActivityAsync(reply);
+                           client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
                 }
