@@ -161,7 +161,7 @@ namespace SimpleEchoBot.Dialogs
        
         private async Task SelectedConfirm(IDialogContext context)
         {
-            PromptDialog.Confirm(context, Confirmed, "¿Deseas realizar otra consulta?");
+            PromptDialog.Confirm(context, Confirmed, "¿Desea realizar otra consulta RRHH?");
           //  return Task.CompletedTask;
         }
 

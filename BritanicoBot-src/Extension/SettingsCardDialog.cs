@@ -12,7 +12,7 @@ namespace SimpleEchoBot.Extension
 
         //*Definicion de variables constantes para los botones dialog*//
         //Intranet
-        public const string InTSearchDocuments = "Búsqueda de documentos en la intranet";
+        public const string InTSearchDocuments = "Búsqueda documentos Intranet";
 
         public const string InTDocsfrecuent = "Documentos frecuentes";
         public const string DocsSoliVaca = "Solicitud de Vacaciones";
@@ -27,7 +27,7 @@ namespace SimpleEchoBot.Extension
 
         public const string PeopleAdm = "Personal Administrativo";
         public const string PeoSearch = "Buscar Personas";
-        public const string PeoRRHH = "Consulta RRHH";
+        public const string PeoRRHH = "Consultas RRHH";
         public const string RRHHHolidays = "Días de vacaciones";
         public const string RRHHvoucher = "Boleta de pago";
         public const string ResetPassword = "Reseteo de password";
@@ -138,7 +138,7 @@ namespace SimpleEchoBot.Extension
                 Buttons = new List<CardAction>()
                 {
 
-                 new CardAction(ActionTypes.OpenUrl, "Ver", value: "https://botteo.herokuapp.com/files/BRITANICO-GUIA-USUARIOS-MESA-DE-AYUDA.pdf")
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value: "https://botteo.herokuapp.com/files/BRITANICO-GUIA-USUARIOS-MESA-DE-AYUDA.pdf")
 
                 }
             };

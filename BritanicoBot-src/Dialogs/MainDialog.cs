@@ -115,7 +115,7 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task SelectedConfirmTI(IDialogContext context)
         {
-            PromptDialog.Confirm(context, ConfirmedTI, "¿Te puedo ayudar en algo mas?");
+            PromptDialog.Confirm(context, ConfirmedTI, "¿Deseas buscar otra solución TI?");
         }
         private async Task SelectedConfirm(IDialogContext context)
         {
@@ -194,7 +194,7 @@ namespace SimpleEchoBot.Dialogs
             message.Attachments = new List<Attachment>();
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             message.Attachments.Add(SettingsCardDialog.CardDocsFrencuent().ToAttachment());
-            message.Text = $"¡CORRECTO...! Te presento los documentos más solicitados.";
+            message.Text = $"¡CORRECTO...! Te presento los documentos más solicitados. Elige el que deseas descargar.";
             await context.PostAsync(message);
 
         }
@@ -273,7 +273,7 @@ namespace SimpleEchoBot.Dialogs
             message.Attachments = new List<Attachment>();
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             message.Attachments.Add(SettingsCardDialog.CardPeticionesHelpDesk().ToAttachment()); 
-            message.Text = $"Si deseas, puedes empezar aquí.";
+            message.Text = $"Si deseas, puedes empezar aquí. Elige tu opción y se abrirá la página correspondiente.";
             await context.PostAsync(message);
             
 
