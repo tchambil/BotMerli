@@ -168,7 +168,7 @@ namespace SimpleEchoBot.Extension
                 {
                     new CardAction(ActionTypes.OpenUrl, DocsSoliVaca, value:"https://botteo.herokuapp.com/files/Solicitud_Vacaciones.doc"),
                     new CardAction(ActionTypes.OpenUrl, DocsSoliBeca, value:"https://botteo.herokuapp.com/files/Solicitud_Beca_de_Estudios.docx"),
-                    new CardAction(ActionTypes.OpenUrl, DocsFormatUser, value:"https://botteo.herokuapp.com/files/Solicitud_de_Adelanto_de_Remuneración.doc"),
+                    new CardAction(ActionTypes.OpenUrl, DocsFormatUser, value:"https://botteo.herokuapp.com/files/Formato_Administración_usuarios.docx"),
                     new CardAction(ActionTypes.OpenUrl, DocsSoliAdelant, value:"https://botteo.herokuapp.com/files/Solicitud_de_Adelanto_de_Remuneración.doc"),
                 }
             };

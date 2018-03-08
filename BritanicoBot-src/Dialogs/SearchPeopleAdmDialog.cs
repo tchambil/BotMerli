@@ -18,7 +18,7 @@ namespace SimpleEchoBot.Dialogs
        
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Ingresa nombre y apellidos:");
+            await context.PostAsync("Ingresar nombre y apellido:");
             context.Wait(MessageRecievedAsync);
         }
         public virtual async Task MessageRecievedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
