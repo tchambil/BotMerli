@@ -76,7 +76,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                             // reply = message.CreateReply();
                            // reply.Attachments = init;
                           //  reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                           client.Conversations.ReplyToActivityAsync(reply);
+                         //  client.Conversations.ReplyToActivityAsync(reply);
                         }
                     }
                 }
