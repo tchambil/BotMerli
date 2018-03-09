@@ -26,18 +26,19 @@ namespace SimpleEchoBot.Dialogs
                 var message = context.MakeMessage();
                 message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                 await context.PostAsync(message);
-                context.Wait(ResumeAfter);
+                await ResumeAfter(context);
                
             }
             else
             {
                 Session.Greet = false;
-                context.Wait(this.MessageReceivedAsync);
+                await StartAsync(context);
+                //context.Wait(this.MessageReceivedAsync);
                
             }
             
         }
-        public async Task ResumeAfter(IDialogContext context, IAwaitable<object> result)
+        public async Task ResumeAfter(IDialogContext context)
         {
             var message = context.MakeMessage();
             message.Attachments = new List<Attachment>();
