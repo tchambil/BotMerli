@@ -31,7 +31,7 @@ namespace SimpleEchoBot.Dialogs
             }
             else
             {
-                //Session.Greet = false;
+                Session.Greet = false;
                // await StartAsync(context);
                 context.Wait(this.MessageReceivedAsync);
                

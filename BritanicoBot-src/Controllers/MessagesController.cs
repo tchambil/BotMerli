@@ -66,6 +66,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                         {
                             if (!Session.Greet)
                             {
+                                Session.Greet = true;
                                 var init = new List<Attachment>()
                                 {
                                      SettingsCardDialog.CardIntranet().ToAttachment(),
@@ -77,7 +78,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                                 client.Conversations.ReplyToActivityAsync(reply);
-                                Session.Greet = true;
+                               
                             }
                             else
                             {
