@@ -152,32 +152,51 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task SelectedInTSearchDocuments(IDialogContext context)
         {
-            var reply = context.MakeMessage();
+           
             List<CardImage> cardImages = new List<CardImage>();
-            CardAction plButton = new CardAction(ActionTypes.ImBack, "", value: "https://botteo.herokuapp.com/img/searchdocs.png");
-            CardImage cardImage = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs.png", tap:plButton);
-            cardImages.Add(cardImage);
+            List<CardImage> cardImages2 = new List<CardImage>();
+            CardAction plButton = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs.png");
+            CardAction plButton2 = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs2.png");
 
+            CardImage cardImage = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs.png", tap:plButton);
+            CardImage cardImage2 = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs2.png", tap: plButton2);
+            cardImages.Add(cardImage);
+            cardImages2.Add(cardImage2);
             HeroCard heroCard = new HeroCard() {
                 Images =cardImages
             };
-            Attachment attachment = heroCard.ToAttachment();
-            //reply.Attachments.Add(attachment);
-            reply.Attachments.Add(new Attachment()
+            HeroCard heroCard2 = new HeroCard()
             {
-                ContentUrl = "https://botteo.herokuapp.com/img/searchdocs.png",
-                ContentType = "image/png",
-                Name = "logo.png"
-            });
-            reply.Attachments.Add(new Attachment()
-            {
-                ContentUrl = "https://botteo.herokuapp.com/img/searchdocs2.png",
-                ContentType = "image/png",                
-                Name = "logo.png"
-            });
+                Images = cardImages2
+            };
+
+
+
+            //reply = context.MakeMessage();
+            //reply.Attachments.Add(new Attachment()
+            //{
+            //    ContentUrl = "https://botteo.herokuapp.com/img/searchdocs.png",
+            //    ContentType = "image/png",
+            //    Name = "logo.png"
+            //});
+            //reply.Attachments.Add(new Attachment()
+            //{
+            //    ContentUrl = "https://botteo.herokuapp.com/img/searchdocs2.png",
+            //    ContentType = "image/png",                
+            //    Name = "logo.png"
+            //});
+            var reply = context.MakeMessage();
             reply.Text = $"¡MUY BIEN...! Dirígete al ícono de la llave en la parte superior derecha de la intranet y colocar el nombre del documento en la barra de búsqueda.";
             await context.PostAsync(reply);
-         
+            reply = context.MakeMessage();
+
+            Attachment attachment = heroCard.ToAttachment();
+            reply.Attachments.Add(attachment);
+            await context.PostAsync(reply);
+            reply = context.MakeMessage();
+            Attachment attachment2 = heroCard2.ToAttachment();
+            reply.Attachments.Add(attachment2);
+            await context.PostAsync(reply);
         }
         private async Task SelectedInTHelpDesk(IDialogContext context)
         {
