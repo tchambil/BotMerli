@@ -28,19 +28,19 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
 
             // check if activity is of type message
-            Session.Greet = false;
+           
             if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
                 Activity isTypingReply = activity.CreateReply();
                 isTypingReply.Type = ActivityTypes.Typing;
                 await connector.Conversations.ReplyToActivityAsync(isTypingReply);
-
+                Session.Greet = true;
                 await Conversation.SendAsync(activity, () => new MainDialog());
             }
             else
             {
-             
+                Session.Greet = false;
                 HandleSystemMessage(activity);
             }
             return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
