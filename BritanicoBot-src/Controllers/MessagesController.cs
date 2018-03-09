@@ -25,8 +25,8 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
         [ResponseType(typeof(void))]
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
         {
-            
-        
+
+
             // check if activity is of type message
             if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
@@ -34,7 +34,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 Activity isTypingReply = activity.CreateReply();
                 isTypingReply.Type = ActivityTypes.Typing;
                 await connector.Conversations.ReplyToActivityAsync(isTypingReply);
-               
+
                 await Conversation.SendAsync(activity, () => new MainDialog());
             }
             else
@@ -51,7 +51,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 // Implement user deletion here
                 // If we handle user deletion, return a real message
             }
-         
+
             else if (message.Type == ActivityTypes.ConversationUpdate)
             {
                 IConversationUpdateActivity update = message;
@@ -62,21 +62,22 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     {
                         if (newMember.Id != message.Recipient.Id)
                         {
-                            var init = new List<Attachment>()
+                            if (!Session.Greet)
+                            {
+                                var init = new List<Attachment>()
                                 {
                                      SettingsCardDialog.CardIntranet().ToAttachment(),
                                      SettingsCardDialog.CardInfColaborador().ToAttachment(),
                                      SettingsCardDialog.CardSolucionesTI().ToAttachment(),
-                             };
-
-
-                            var reply = message.CreateReply();
-                            // reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.";
-                            reply.Text = "Iniciando con UserId:" + newMember.Id + " y UserName :" + newMember.Name;
-                            // reply = message.CreateReply();
-                           // reply.Attachments = init;
-                          //  reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                         //  client.Conversations.ReplyToActivityAsync(reply);
+                                };
+                                var reply = message.CreateReply();
+                                reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.  Permíteme ayudarte en los siguientes temas:";
+                                // reply = message.CreateReply();
+                                reply.Attachments = init;
+                                reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                                client.Conversations.ReplyToActivityAsync(reply);
+                                Session.Greet = true;
+                            }
                         }
                     }
                 }

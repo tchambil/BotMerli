@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using SimpleEchoBot.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -54,6 +55,7 @@ namespace SimpleEchoBot.Dialogs
                 await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
                
             }
+            Session.Greet = false;
             context.Done<object>(null);
         }
       

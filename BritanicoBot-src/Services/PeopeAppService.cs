@@ -58,7 +58,19 @@ namespace SimpleEchoBot.Services
                 return JsonConvert.DeserializeObject<People>(resultContent);
             }
         }
-
+        public async Task<People> CreateSurvey(string vote)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //  httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "THIS TOKEN");
+                httpClient.BaseAddress = new Uri(UrlApiBritanico);
+                var response = await httpClient.GetAsync("api/trabajador/survey?vote=" + vote);
+                var resultContent = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<People>(resultContent);
+            }
+        }
         public async Task<List<People>> SearchByNamePeople(string People)
         {
             using (var httpClient = new HttpClient())

@@ -13,5 +13,6 @@ namespace SimpleEchoBot.Model
         public static string Nombre { get; set; }
         public static DateTime Expiration { get; set; }
         public static TimeSpan Start { get; set; }
+        public static bool Greet { get; set; }
     }
 }
