@@ -14,5 +14,6 @@ namespace SimpleEchoBot.Model
         public static DateTime Expiration { get; set; }
         public static TimeSpan Start { get; set; }
         public static bool Greet { get; set; }
+        public static int count { get; set; }
     }
 }
