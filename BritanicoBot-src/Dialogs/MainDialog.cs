@@ -20,10 +20,11 @@ namespace SimpleEchoBot.Dialogs
         {
             Session.Codigo = null;
             Session.Result = false;
-           /* var message = context.MakeMessage();
-             message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
-             await context.PostAsync(message);          
-             context.Wait(ResumeAfter);*/
+            /* var message = context.MakeMessage();
+              message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+              await context.PostAsync(message);          
+              context.Wait(ResumeAfter);*/
+            Session.Greet = false;
             context.Wait(this.MessageReceivedAsync);
         }
         public async Task ResumeAfter(IDialogContext context, IAwaitable<object> result)
