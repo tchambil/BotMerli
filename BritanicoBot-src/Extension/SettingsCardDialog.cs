@@ -122,7 +122,7 @@ namespace SimpleEchoBot.Extension
                 Buttons = new List<CardAction>()
                 {
                     new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions)
-                     
+
                 }
             };
             return card;
@@ -174,7 +174,7 @@ namespace SimpleEchoBot.Extension
             };
             return card;
         }
-        
+
         public static VideoCard CardPCPrintOptions()
         {
             return new VideoCard

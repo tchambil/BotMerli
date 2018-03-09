@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Connector;
+﻿using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
 using SimpleEchoBot.Model;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,35 @@ namespace SimpleEchoBot.Extension
             ConnectorClient connector = new ConnectorClient(new Uri(reply.ServiceUrl));
             await connector.Conversations.SendToConversationAsync(reply);
         }
-     
+        public static async void ShowSearchDocumentCard(IDialogContext context)
+        {
+            List<CardImage> cardImages = new List<CardImage>();
+            List<CardImage> cardImages2 = new List<CardImage>();
+            CardAction plButton = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs.png");
+            CardAction plButton2 = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs2.png");
+
+            CardImage cardImage = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs.png", tap: plButton);
+            CardImage cardImage2 = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs2.png", tap: plButton2);
+            cardImages.Add(cardImage);
+            cardImages2.Add(cardImage2);
+            HeroCard heroCard = new HeroCard()
+            {
+                Images = cardImages,
+                Tap = plButton
+            };
+            HeroCard heroCard2 = new HeroCard()
+            {
+                Images = cardImages2,
+                Tap = plButton2
+            };
+
+            var reply = context.MakeMessage();
+            reply.Text = $"¡MUY BIEN...! Dirígete al ícono de la llave en la parte superior derecha de la intranet y colocar el nombre del documento en la barra de búsqueda.";
+            Attachment attachment = heroCard.ToAttachment();
+            reply.Attachments.Add(attachment);
+            Attachment attachment2 = heroCard2.ToAttachment();
+            reply.Attachments.Add(attachment2);
+            await context.PostAsync(reply);
+        }
     }
 }
