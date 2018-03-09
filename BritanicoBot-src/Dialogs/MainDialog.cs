@@ -22,16 +22,18 @@ namespace SimpleEchoBot.Dialogs
             Session.Result = false;
             if (!Session.Greet)
             {
+                Session.Greet = true;
                 var message = context.MakeMessage();
                 message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                 await context.PostAsync(message);
                 context.Wait(ResumeAfter);
-                Session.Greet = true;
+               
             }
             else
             {
-                context.Wait(this.MessageReceivedAsync);
                 Session.Greet = false;
+                context.Wait(this.MessageReceivedAsync);
+               
             }
             
         }
@@ -94,7 +96,7 @@ namespace SimpleEchoBot.Dialogs
                         
                         break;
                     default:
-                        await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
+                        //await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
                         await CardCarousel(context);
                         break;
 
