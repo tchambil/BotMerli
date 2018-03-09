@@ -45,7 +45,7 @@ namespace SimpleEchoBot.Dialogs
             message.Attachments.Add(SettingsCardDialog.CardIntranet().ToAttachment());
             message.Attachments.Add(SettingsCardDialog.CardInfColaborador().ToAttachment());
             message.Attachments.Add(SettingsCardDialog.CardSolucionesTI().ToAttachment());
-            message.Text = $"Te puedo ayudar con las siguientes opciones.";
+           // message.Text = $"Te puedo ayudar con las siguientes opciones.";
             await context.PostAsync(message);
             context.Wait(this.MessageReceivedAsync);
 
@@ -96,8 +96,8 @@ namespace SimpleEchoBot.Dialogs
                         
                         break;
                     default:
-                        //await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
-                        await CardCarousel(context);
+                         await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
+                        await StartAsync(context);
                         break;
 
                 } 
@@ -106,7 +106,7 @@ namespace SimpleEchoBot.Dialogs
             else
             {
                
-                await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
+                await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
                 context.Wait(this.MessageReceivedAsync);
             }
         }
