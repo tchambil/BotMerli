@@ -79,6 +79,11 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                 client.Conversations.ReplyToActivityAsync(reply);
                                 Session.Greet = true;
                             }
+                            else
+                            {
+                                Session.Greet = false;
+                                HandleSystemMessage(message);
+                            }
                         }
                     }
                 }
