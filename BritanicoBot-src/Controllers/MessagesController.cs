@@ -29,7 +29,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             // check if activity is of type message
            
-            if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
+            if (activity != null && activity.GetActivityType() == ActivityTypes.Message&& Session.Greet)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
                 Activity isTypingReply = activity.CreateReply();
@@ -77,8 +77,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                 reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.  Permíteme ayudarte en los siguientes temas:";
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                                client.Conversations.ReplyToActivityAsync(reply);
-                                Session.Greet = true;
+                                client.Conversations.ReplyToActivityAsync(reply);                               
                             }
                         }
                     }
