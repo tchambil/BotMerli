@@ -75,7 +75,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                      SettingsCardDialog.CardSolucionesTI().ToAttachment(),
                                 };
                                 var reply = message.CreateReply();
-                                 reply.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:s"+ Session.count.ToString();
+                                 reply.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                                 client.Conversations.ReplyToActivityAsync(reply);
@@ -83,7 +83,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                             }
                             else
                             {
-                                Session.count++;
+                               // Session.count++;
                                 Session.Greet = false;
                                 HandleSystemMessage(message);
                             }
