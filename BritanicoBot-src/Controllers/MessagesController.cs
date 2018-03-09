@@ -29,18 +29,17 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             // check if activity is of type message
            
-            if (activity != null && activity.GetActivityType() == ActivityTypes.Message&& Session.Greet)
+            if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
                 Activity isTypingReply = activity.CreateReply();
                 isTypingReply.Type = ActivityTypes.Typing;
                 await connector.Conversations.ReplyToActivityAsync(isTypingReply);
-                Session.Greet = true;
+                
                 await Conversation.SendAsync(activity, () => new MainDialog());
             }
             else
-            {
-                Session.Greet = false;
+            { 
                 HandleSystemMessage(activity);
             }
             return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
@@ -74,10 +73,11 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                      SettingsCardDialog.CardSolucionesTI().ToAttachment(),
                                 };
                                 var reply = message.CreateReply();
-                                reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.  Permíteme ayudarte en los siguientes temas:";
+                                 reply.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                                client.Conversations.ReplyToActivityAsync(reply);                               
+                                client.Conversations.ReplyToActivityAsync(reply);
+                                Session.Greet = true;
                             }
                         }
                     }
