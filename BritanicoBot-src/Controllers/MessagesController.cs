@@ -81,12 +81,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                 client.Conversations.ReplyToActivityAsync(reply);
                                
                             }
-                            else
-                            {
-                                Session.count++;
-                                Session.Greet = false;
-                                HandleSystemMessage(message);
-                            }
+                            //else
+                            //{
+                            //    Session.count++;
+                            //    Session.Greet = false;
+                            //    HandleSystemMessage(message);
+                            //}
                         }
                     }
                 }
