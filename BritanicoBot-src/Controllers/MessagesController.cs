@@ -72,7 +72,6 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                 };
                                 var reply = message.CreateReply();
                                 reply.Text = $"¡Hola, soy Merlí! Encantado de poder interactuar contigo.  Permíteme ayudarte en los siguientes temas:";
-                                // reply = message.CreateReply();
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                                 client.Conversations.ReplyToActivityAsync(reply);
