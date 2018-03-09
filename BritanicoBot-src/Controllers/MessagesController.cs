@@ -28,6 +28,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
 
             // check if activity is of type message
+            Session.Greet = false;
             if (activity != null && activity.GetActivityType() == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
@@ -39,6 +40,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
+             
                 HandleSystemMessage(activity);
             }
             return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
@@ -50,6 +52,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             {
                 // Implement user deletion here
                 // If we handle user deletion, return a real message
+              
             }
 
             else if (message.Type == ActivityTypes.ConversationUpdate)
