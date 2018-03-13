@@ -96,6 +96,9 @@ namespace SimpleEchoBot.Dialogs
                         await SelectedITOptionsk(context);
                         
                         break;
+                    case SettingsCardDialog.ITPreguntaFrecuentes:
+                        context.Call(new QADialog(), ResumeAfterOptionDialog);
+                        break;
                     default:
                          await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
                         await StartAsync(context);

@@ -35,6 +35,8 @@ namespace SimpleEchoBot.Extension
 
         //SolutionIT
         public const string ITOptions = "Opciones";
+        public const string ITPreguntaFrecuentes = "Preguntas frecuentes";
+
         //HelpDesk
         public const string PESistemas = "Sistemas";
         public const string PEMantenimiento = "Mantenimiento";
@@ -121,7 +123,8 @@ namespace SimpleEchoBot.Extension
                 Title = "SOLUCIONES RÁPIDAS DE TI",
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions)
+                    new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions),
+                         new CardAction(ActionTypes.ImBack, ITPreguntaFrecuentes, value:ITPreguntaFrecuentes)
 
                 }
             };
