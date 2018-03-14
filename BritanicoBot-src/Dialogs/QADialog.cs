@@ -20,7 +20,7 @@ namespace SimpleEchoBot.Dialogs
             /* Wait until the first message is received from the conversation and call MessageReceviedAsync 
             *  to process that message. */
             var message = context.MakeMessage();
-            message.Text = $"¡Correcto! Escriba lo que desea saber.";
+            message.Text = $"Por el momento puedo responderte las preguntas frecuentes que se encuentran en https://www.britanico.edu.pe/preguntas-frecuentes/ y dime cual es tu pregunta:";
             await context.PostAsync(message);
             context.Wait(this.MessageReceivedAsync);
         }
@@ -47,11 +47,32 @@ namespace SimpleEchoBot.Dialogs
             }
 
         }
+        private async Task SelectedConfirm(IDialogContext context)
+        {
+          
 
+        }
+        public async Task Confirmed(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var reply = context.MakeMessage();
+            bool isCorrect = await argument;
+            if (isCorrect)
+            {
+                var message = context.MakeMessage();
+                message.Text = $"¡Muy Bien! Pregúntame lo que deseas saber:";
+                await context.PostAsync(message);
+                context.Wait(MessageReceivedAsync);
+            }
+            else
+            {
+                context.Done<object>(null);
+            }
+        }
         private async Task AfterAnswerAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             // wait for the next user message
-            context.Wait(MessageReceivedAsync);
+            PromptDialog.Confirm(context, Confirmed, "¿Tienes alguna pregunta más?");
+         
         }
     }
     [Serializable]
