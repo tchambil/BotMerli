@@ -64,7 +64,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     {
                         if (newMember.Id != message.Recipient.Id)
                         {
-                
+                            var user = newMember.Name;
                             if (!Session.Greet)
                             {
                                 Session.Greet = true;
@@ -75,7 +75,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                      SettingsCardDialog.CardSolucionesTI().ToAttachment(),
                                 };
                                 var reply = message.CreateReply();
-                                 reply.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+                                 reply.Text = $"¡Hola, "+user+" soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                                 client.Conversations.ReplyToActivityAsync(reply);
