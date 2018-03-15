@@ -78,7 +78,7 @@ namespace SimpleEchoBot.Extension
                 Buttons = new List<CardAction>()
                 {
                     new CardAction(ActionTypes.ImBack, PeoSearch, value:PeoSearch),
-                    new CardAction(ActionTypes.ImBack, PeoRRHH, value:PeoRRHH),
+                   // new CardAction(ActionTypes.ImBack, PeoRRHH, value:PeoRRHH),
               //      new CardAction(ActionTypes.ImBack, ResetPassword, value:ResetPassword)
                 }
             };
