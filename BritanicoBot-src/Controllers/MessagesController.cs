@@ -64,7 +64,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                     {
                         if (newMember.Id != message.Recipient.Id)
                         {
-                            var user = newMember.Id;
+                            var user = newMember.Name;
                             if (!Session.Greet)
                             {
                                 Session.Greet = true;
