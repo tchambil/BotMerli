@@ -3,6 +3,7 @@ using Microsoft.Bot.Connector;
 using SimpleEchoBot.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,8 @@ namespace SimpleEchoBot.Extension
 {
     public class CardUtil
     {
+        private static readonly string UrlResource = ConfigurationManager.AppSettings["URL_RESOURCE"];
+
         public static async void ShowPeopleHeroCard(IMessageActivity message, List<People> input)
         {
             Activity reply = ((Activity)message).CreateReply();
@@ -60,7 +63,7 @@ namespace SimpleEchoBot.Extension
                 Images = cardImages,
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.DownloadFile, "Ver", value:"https://botteo.herokuapp.com/files/BoletaPago.pdf"), 
+                    new CardAction(ActionTypes.DownloadFile, "Ver", value: UrlResource+"/files/BoletaPago.pdf"), 
                 }
             }; 
 
@@ -72,11 +75,11 @@ namespace SimpleEchoBot.Extension
         {
             List<CardImage> cardImages = new List<CardImage>();
             List<CardImage> cardImages2 = new List<CardImage>();
-            CardAction plButton = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs.png");
-            CardAction plButton2 = new CardAction(ActionTypes.OpenUrl, "", value: "https://botteo.herokuapp.com/img/searchdocs2.png");
+            CardAction plButton = new CardAction(ActionTypes.OpenUrl, "", value: UrlResource + "/img/searchdocs.png");
+            CardAction plButton2 = new CardAction(ActionTypes.OpenUrl, "", value: UrlResource + "/img/searchdocs2.png");
 
-            CardImage cardImage = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs.png", tap: plButton);
-            CardImage cardImage2 = new CardImage(url: "https://botteo.herokuapp.com/img/searchdocs2.png", tap: plButton2);
+            CardImage cardImage = new CardImage(url: UrlResource + "/img/searchdocs.png", tap: plButton);
+            CardImage cardImage2 = new CardImage(url: UrlResource + "/img/searchdocs2.png", tap: plButton2);
             cardImages.Add(cardImage);
             cardImages2.Add(cardImage2);
             HeroCard heroCard = new HeroCard()

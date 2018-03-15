@@ -1,6 +1,7 @@
 ﻿using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Hosting;
@@ -9,6 +10,7 @@ namespace SimpleEchoBot.Extension
 {
     public static class SettingsCardDialog
     {
+        private static readonly string UrlResource = ConfigurationManager.AppSettings["URL_RESOURCE"];
 
         //*Definicion de variables constantes para los botones dialog*//
         //Intranet
@@ -136,12 +138,12 @@ namespace SimpleEchoBot.Extension
 
             HeroCard card = new HeroCard()
             {
-                Images = new List<CardImage>() { new CardImage(url: "https://botteo.herokuapp.com/img/manualpeticion.png"), },
+                Images = new List<CardImage>() { new CardImage(url: UrlResource+"/img/manualpeticion.png"), },
 
                 Buttons = new List<CardAction>()
                 {
 
-                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value: "https://botteo.herokuapp.com/files/BRITANICO-GUIA-USUARIOS-MESA-DE-AYUDA.pdf")
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/BRITANICO-GUIA-USUARIOS-MESA-DE-AYUDA.pdf")
 
                 }
             };
@@ -169,10 +171,10 @@ namespace SimpleEchoBot.Extension
 
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.OpenUrl, DocsSoliVaca, value:"https://botteo.herokuapp.com/files/Solicitud_Vacaciones.doc"),
-                    new CardAction(ActionTypes.OpenUrl, DocsSoliBeca, value:"https://botteo.herokuapp.com/files/Solicitud_Beca_de_Estudios.docx"),
-                    new CardAction(ActionTypes.OpenUrl, DocsFormatUser, value:"https://botteo.herokuapp.com/files/Formato_Administración_usuarios.docx"),
-                    new CardAction(ActionTypes.OpenUrl, DocsSoliAdelant, value:"https://botteo.herokuapp.com/files/Solicitud_de_Adelanto_de_Remuneración.doc"),
+                    new CardAction(ActionTypes.OpenUrl, DocsSoliVaca, value: UrlResource+"/files/Solicitud_Vacaciones.doc"),
+                    new CardAction(ActionTypes.OpenUrl, DocsSoliBeca, value: UrlResource+"/files/Solicitud_Beca_de_Estudios.docx"),
+                    new CardAction(ActionTypes.OpenUrl, DocsFormatUser, value: UrlResource+"/files/Formato_Administración_usuarios.docx"),
+                    new CardAction(ActionTypes.OpenUrl, DocsSoliAdelant, value: UrlResource+"/files/Solicitud_de_Adelanto_de_Remuneración.doc"),
                 }
             };
             return card;

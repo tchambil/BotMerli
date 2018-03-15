@@ -20,7 +20,7 @@ namespace SimpleEchoBot.Dialogs
             /* Wait until the first message is received from the conversation and call MessageReceviedAsync 
             *  to process that message. */
             var message = context.MakeMessage();
-            message.Text = $"Por el momento puedo responderte las preguntas frecuentes que se encuentran en https://www.britanico.edu.pe/preguntas-frecuentes/ y dime cual es tu pregunta:";
+            message.Text = $"Dime cual es tu pregunta:";
             await context.PostAsync(message);
             context.Wait(this.MessageReceivedAsync);
         }
