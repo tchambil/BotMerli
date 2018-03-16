@@ -75,7 +75,9 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                                      SettingsCardDialog.CardSolucionesTI().ToAttachment(),
                                 };
                                 var reply = message.CreateReply();
-                                 reply.Text = $"¡Hola, "+(user==null?"":user)+" soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+                               //  reply.Text = $"¡Hola, "+(user==null?"":user)+" soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+                                reply.Text = $"¡Hola, " + (user == null ? "" : user) + ". Permíteme ayudarte en los siguientes temas:";
+
                                 reply.Attachments = init;
                                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                                 client.Conversations.ReplyToActivityAsync(reply);

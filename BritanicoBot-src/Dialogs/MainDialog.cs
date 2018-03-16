@@ -23,8 +23,8 @@ namespace SimpleEchoBot.Dialogs
             if (!Session.Greet)
             {
                 Session.Greet = true;
-                var message = context.MakeMessage();
-                message.Text = $"¡Hola, soy Merlí! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+                var message = context.MakeMessage();                
+                message.Text = $"¡Hola, soy Oliver! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
                 await context.PostAsync(message);
                 await ResumeAfter(context);
                
