@@ -110,6 +110,8 @@ namespace SimpleEchoBot.Dialogs
             catch (Exception e)
             {
                 Debug.WriteLine($"Error when searching for people: {e.Message}");
+                await context.PostAsync("¡LO SIENTO...! Por el momento no esta disponible este servicio. Por favor, intente más tarde.");
+                context.Done<object>(null);
             }
          
         }
