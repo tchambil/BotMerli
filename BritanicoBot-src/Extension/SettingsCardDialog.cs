@@ -50,7 +50,7 @@ namespace SimpleEchoBot.Extension
         public const string OPPOS = "Problemas con el POS";
         public const string OPComputer = "Estación de Trabajo";
         public const string OPTicket = "Ticketera";
-        public const string OPProyector = "Proyecto de Aula";
+        public const string OPProyector = "Proyector de Aula";
         public const string OPConnectivity = "Conectividad de Red";
         public const string OPEmailOutlook = "Correo Outlook";
 
