@@ -3,6 +3,7 @@ using Microsoft.Bot.Connector;
 using SimpleEchoBot.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,22 +14,21 @@ namespace SimpleEchoBot.Dialogs
     [Serializable]
     public class ScoreDialog : IDialog<object>
     {
+        private static readonly string UrlResource = ConfigurationManager.AppSettings["URL_RESOURCE"];
         public async Task StartAsync(IDialogContext context)
         {
             var message = context.MakeMessage();            
             List<CardImage> cardImages = new List<CardImage>();
-            cardImages.Add(new CardImage(url: "https://botteo.herokuapp.com/img/evaluate.png"));
+            cardImages.Add(new CardImage(url: UrlResource +"/img/evaluate.png"));
             HeroCard plCard = new HeroCard()
             {
                 Images = cardImages,
                 Buttons =  new List<CardAction>()
                 {
-                    
-                    
                     new CardAction(ActionTypes.ImBack, "1. Satisfecho", value:"1"),
                     new CardAction(ActionTypes.ImBack, "2. Neutral", value:"2"),
                     new CardAction(ActionTypes.ImBack, "3. Insatisfecho", value:"3"),
-                                    }
+                 }
             };             
            
             Attachment plAttachment = plCard.ToAttachment();

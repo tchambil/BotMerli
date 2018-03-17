@@ -44,13 +44,17 @@ namespace SimpleEchoBot.Extension
         public const string PEMantenimiento = "Mantenimiento";
         public const string PEElearnig = "E-LEARNING";
         //Options 
-        public const string OPPcPrint = "PC e IMPRESORA";
-        public const string OPConnectivity = "Conectividad de red";
+        public const string OPPcPrint = "Cola de Impresión";
+        
         public const string OPLogin = "Problemas de inicio de sesión";
         public const string OPPOS = "Problemas con el POS";
-        public const string OPTicket = "Ticketeras";
+        public const string OPComputer = "Estación de Trabajo";
+        public const string OPTicket = "Ticketera";
+        public const string OPProyector = "Proyecto de Aula";
+        public const string OPConnectivity = "Conectividad de Red";
         public const string OPEmailOutlook = "Correo Outlook";
 
+       
         //*Definicion de HeroCard*//
         public static HeroCard CardInfColaborador()
         {
@@ -180,131 +184,161 @@ namespace SimpleEchoBot.Extension
             return card;
         }
 
-        public static VideoCard CardPCPrintOptions()
+        //public static VideoCard CardPCPrintOptions()
+        //{
+        //    return new VideoCard
+        //    {
+        //        Title = "¿Problemas con tu PC o Impresora?",
+        //        Subtitle = "Siga los siguientes pasos:",
+        //        Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        //        Image = new ThumbnailUrl
+        //        {
+        //            Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
+        //        },
+        //        Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
+        //        Buttons = new List<CardAction>{new CardAction()
+        //                                {
+        //                                        Title = "Más información",
+        //                                        Type = ActionTypes.OpenUrl,
+        //                                        Value = "https://www.britanico.edu.pe/"
+        //                                    }
+        //                                }
+        //    };
+
+        //}
+        //public static VideoCard CardLoginOptions()
+        //{
+        //    return new VideoCard
+        //    {
+        //        Title = "¿Problemas el inicio de sesión?",
+        //        Subtitle = "Siga los siguientes pasos:",
+        //        Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        //        Image = new ThumbnailUrl
+        //        {
+        //            Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
+        //        },
+        //        Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
+        //        Buttons = new List<CardAction>{new CardAction()
+        //                                {
+        //                                        Title = "Más información",
+        //                                        Type = ActionTypes.OpenUrl,
+        //                                        Value = "https://www.britanico.edu.pe/"
+        //                                    }
+        //                                }
+        //    };
+        //}
+        //public static VideoCard CardPOSOptions()
+        //{
+        //    return new VideoCard
+        //    {
+        //        Title = "¿Problemas con en POS?",
+        //        Subtitle = "Siga los siguientes pasos:",
+        //        Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        //        Image = new ThumbnailUrl
+        //        {
+        //            Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
+        //        },
+        //        Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
+        //        Buttons = new List<CardAction>{new CardAction()
+        //                                {
+        //                                        Title = "Más información",
+        //                                        Type = ActionTypes.OpenUrl,
+        //                                        Value = "https://www.britanico.edu.pe/"
+        //                                    }
+        //                                }
+        //    };
+        //}
+        public static HeroCard CardComputerOptions()
         {
-            return new VideoCard
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas con tu PC o Impresora?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Estacion_de_trabajo.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Estacion_de_trabajo.pdf")
+
+                }
             };
+            return card;
         }
-        public static VideoCard CardConnectivityOptions()
+
+        public static HeroCard CardPCPrintOptions()
         {
-            return new VideoCard
+             
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas con tu conectividad de red?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Cola_de_impresion.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Cola_de_impresion.pdf")
+
+                }
             };
+            return card;
         }
-        public static VideoCard CardLoginOptions()
+        public static HeroCard CardTickesOptions()
         {
-            return new VideoCard
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas el inicio de sesión?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Ticketera.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Ticketera.pdf")
+
+                }
             };
+            return card;
         }
-        public static VideoCard CardPOSOptions()
+        public static HeroCard CardProyectorOptions()
         {
-            return new VideoCard
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas con en POS?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Proyector_de_aula.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Proyector_de_aula.pdf")
+
+                }
             };
+            return card;
         }
-        public static VideoCard CardTickesOptions()
+        public static HeroCard CardConnectivityOptions()
         {
-            return new VideoCard
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas con las Ticketeras?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Conectividad_de_red.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Conectividad_de_red.pdf")
+
+                }
             };
+            return card;
         }
-        public static VideoCard CardEmailOutlookOptions()
+        public static HeroCard CardEmailOutlookOptions()
         {
-            return new VideoCard
+            HeroCard card = new HeroCard()
             {
-                Title = "¿Problemas con el Correo Outlook?",
-                Subtitle = "Siga los siguientes pasos:",
-                Text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                Image = new ThumbnailUrl
+                Images = new List<CardImage>() { new CardImage(url: UrlResource + "/img/Correo_outlook.png"), },
+
+                Buttons = new List<CardAction>()
                 {
-                    Url = "https://www.barewalls.com/comp/art-print-poster/bwc13867506/computer-problem.jpg"
-                },
-                Media = new List<MediaUrl> { new MediaUrl() { Url = "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" } },
-                Buttons = new List<CardAction>{new CardAction()
-                                        {
-                                                Title = "Más información",
-                                                Type = ActionTypes.OpenUrl,
-                                                Value = "https://www.britanico.edu.pe/"
-                                            }
-                                        }
+
+                 new CardAction(ActionTypes.OpenUrl, "VER GUÍA", value:  UrlResource+"/files/Correo_outlook.pdf")
+
+                }
             };
+            return card;
         }
     }
 }

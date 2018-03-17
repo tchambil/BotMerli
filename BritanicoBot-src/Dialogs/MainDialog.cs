@@ -188,13 +188,13 @@ namespace SimpleEchoBot.Dialogs
         {
             PromptDialog.Choice(context, AfterMenuSelection, new List<string>()
             { SettingsCardDialog.InTSearchDocuments,
+                SettingsCardDialog.OPComputer,
                 SettingsCardDialog.OPPcPrint,
+                SettingsCardDialog.OPTicket,
+                SettingsCardDialog.OPProyector,
                 SettingsCardDialog.OPConnectivity,
-               // SettingsCardDialog.OPLogin,
-               // SettingsCardDialog.OPPOS,
-              //  SettingsCardDialog.OPTicket,
-                SettingsCardDialog.OPEmailOutlook,
-               
+                SettingsCardDialog.OPEmailOutlook                
+
             },
                 "¡CORRECTO...! Con estas opciones podrás solucionar de manera rápida tu problema.");
 
@@ -205,11 +205,35 @@ namespace SimpleEchoBot.Dialogs
             var optionSelected = await result;
             switch (optionSelected)
             {
+                case SettingsCardDialog.InTSearchDocuments:
+                    CardUtil.ShowSearchDocumentCard(context);
+                    Thread.Sleep(4000);
+                    await SelectedConfirmTI(context);
+                    break;
+                case SettingsCardDialog.OPComputer:
+                      message.Attachments.Add(SettingsCardDialog.CardComputerOptions().ToAttachment());
+                    await context.PostAsync(message);
+                    Thread.Sleep(4000);
+                    await SelectedConfirm(context);
+                    break;
                 case SettingsCardDialog.OPPcPrint:
                     message.Attachments.Add(SettingsCardDialog.CardPCPrintOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
                     await SelectedConfirmTI(context);
+                    break;
+
+                case SettingsCardDialog.OPTicket:
+                       message.Attachments.Add(SettingsCardDialog.CardTickesOptions().ToAttachment());
+                    await context.PostAsync(message);
+                    Thread.Sleep(4000);
+                    await SelectedConfirm(context);
+                    break;
+                case SettingsCardDialog.OPProyector:
+                     message.Attachments.Add(SettingsCardDialog.CardProyectorOptions().ToAttachment());
+                    await context.PostAsync(message);
+                    Thread.Sleep(4000);
+                    await SelectedConfirm(context);
                     break;
                 case SettingsCardDialog.OPConnectivity:
                     message.Attachments.Add(SettingsCardDialog.CardConnectivityOptions().ToAttachment());
@@ -217,35 +241,13 @@ namespace SimpleEchoBot.Dialogs
                     Thread.Sleep(4000);
                     await SelectedConfirmTI(context);
                     break;
-                //case SettingsCardDialog.OPLogin:
-                //    message.Attachments.Add(SettingsCardDialog.CardLoginOptions().ToAttachment());
-                //    await context.PostAsync(message);
-                //    Thread.Sleep(4000);
-                //    await SelectedConfirm(context);
-                //    break;
-                //case SettingsCardDialog.OPPOS:
-                //    message.Attachments.Add(SettingsCardDialog.CardPOSOptions().ToAttachment());
-                //    await context.PostAsync(message);
-                //    Thread.Sleep(4000);
-                //    await SelectedConfirm(context);
-                //    break;
-                //case SettingsCardDialog.OPTicket:
-                //    message.Attachments.Add(SettingsCardDialog.CardTickesOptions().ToAttachment());
-                //    await context.PostAsync(message);
-                //    Thread.Sleep(4000);
-                //    await SelectedConfirm(context);
-                //    break;
                 case SettingsCardDialog.OPEmailOutlook:
                     message.Attachments.Add(SettingsCardDialog.CardEmailOutlookOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
                     await SelectedConfirmTI(context);
                     break;
-                case SettingsCardDialog.InTSearchDocuments: 
-                    CardUtil.ShowSearchDocumentCard(context);
-                    Thread.Sleep(4000);
-                    await SelectedConfirmTI(context);
-                    break;
+                
                 default:
                     await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", optionSelected ));
                  await SelectedITOptionsk(context);
