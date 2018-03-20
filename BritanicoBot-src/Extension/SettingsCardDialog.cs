@@ -27,7 +27,7 @@ namespace SimpleEchoBot.Extension
         public const string InfAnexo = "Anexo";
         public const string InfEmail = "Correo electrónico";
 
-        public const string PeopleAdm = "Personal Administrativo";
+        public const string PeopleAdm = "Personal Británico";
         public const string PeoSearch = "Buscar Personas";
         public const string PeoRRHH = "Consultas RRHH";
         public const string RRHHHolidays = "Días de vacaciones";
@@ -77,7 +77,7 @@ namespace SimpleEchoBot.Extension
 
             HeroCard card = new HeroCard()
             {
-                Title = "Información de Personal administrativo",
+                Title = "Información de Personal Británico",
 
                 Buttons = new List<CardAction>()
                 {
