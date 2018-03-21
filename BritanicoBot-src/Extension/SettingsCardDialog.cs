@@ -127,10 +127,10 @@ namespace SimpleEchoBot.Extension
         {
             HeroCard card = new HeroCard()
             {
-                Title = "SOLUCIONES RÁPIDAS TI",
+                Title = "SOLUCIONES RÁPIDAS",
                 Buttons = new List<CardAction>()
                 {
-                    new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions),
+                    new CardAction(ActionTypes.ImBack, "SOLUCIONES TI", value:ITOptions),
                          new CardAction(ActionTypes.ImBack, ITPreguntaFrecuentes, value:ITPreguntaFrecuentes)
 
                 }
