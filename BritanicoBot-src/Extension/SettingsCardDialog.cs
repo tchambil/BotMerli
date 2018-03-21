@@ -43,6 +43,7 @@ namespace SimpleEchoBot.Extension
         public const string PESistemas = "Sistemas";
         public const string PEMantenimiento = "Mantenimiento";
         public const string PEElearnig = "E-LEARNING";
+        public const string PEMarketing = "Marketing";
         //Options 
         public const string OPPcPrint = "Cola de Impresión";
         
@@ -163,6 +164,7 @@ namespace SimpleEchoBot.Extension
                     new CardAction(ActionTypes.OpenUrl, PESistemas, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=2"),
                     new CardAction(ActionTypes.OpenUrl, PEMantenimiento, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=1"),
                     new CardAction(ActionTypes.OpenUrl, PEElearnig, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=3"),
+                       new CardAction(ActionTypes.OpenUrl, PEMarketing, value:"http://intranet.britanico.edu.pe/soluciones/mesadeayuda/Lists/PeticionesServicio/NuevaPeticion.aspx?Source=/soluciones/mesadeayuda/Paginas/MisPeticiones.aspx&Tipo=4"),
 
                 }
             };

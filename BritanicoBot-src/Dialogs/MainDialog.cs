@@ -85,8 +85,8 @@ namespace SimpleEchoBot.Dialogs
                         await SelectedConfirm(context);
                         break;
                     case SettingsCardDialog.PeopleAdm:
-                        context.Call(new PeopleAdmDialog(), ResumeAfterOptionDialog);
-                        
+                        // context.Call(new PeopleAdmDialog(), ResumeAfterOptionDialog);
+                        context.Call(new SearchPeopleAdmDialog(), ResumeAfterOptionDialog);                        
                         break;
                     case SettingsCardDialog.PeopleCentro:
                         context.Call(new SearchDocenteDialog(), ResumeAfterOptionDialog);
