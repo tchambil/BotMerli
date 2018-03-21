@@ -127,7 +127,7 @@ namespace SimpleEchoBot.Extension
         {
             HeroCard card = new HeroCard()
             {
-                Title = "SOLUCIONES RÁPIDAS DE TI",
+                Title = "SOLUCIONES RÁPIDAS TI",
                 Buttons = new List<CardAction>()
                 {
                     new CardAction(ActionTypes.ImBack, "Ver Opciones", value:ITOptions),
