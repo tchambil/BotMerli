@@ -36,7 +36,7 @@ namespace SimpleEchoBot.Extension
         public const string PeopleCentro = "Personal de centro";
 
         //SolutionIT
-        public const string ITOptions = "Opciones";
+        public const string ITOptions = "Soluciones TI";
         public const string ITPreguntaFrecuentes = "Preguntas frecuentes";
 
         //HelpDesk
