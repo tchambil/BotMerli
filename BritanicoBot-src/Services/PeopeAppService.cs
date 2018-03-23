@@ -79,23 +79,21 @@ namespace SimpleEchoBot.Services
                 }
             }
         }
-        public async Task<People> CreateSurvey(string vote)
+        public async Task<bool> CreateSurvey(string vote)
         {
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Clear();
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //  httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "THIS TOKEN");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));            
                 httpClient.BaseAddress = new Uri(UrlApiBritanico);
-                var response = await httpClient.GetAsync("api/trabajador/survey?vote=" + vote);
+                var response = await httpClient.GetAsync("api/encuesta/registrar?valor=" + vote);
                 if (response.StatusCode.ToString() != "OK")
                 {
-                    return null;
+                    return false;
                 }
                 else
-                {
-                    var resultContent = response.Content.ReadAsStringAsync().Result;
-                    return JsonConvert.DeserializeObject<People>(resultContent);
+                {                  
+                    return true;
                 }
             }
         }

@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using SimpleEchoBot.Services;
 
 namespace SimpleEchoBot.Dialogs
 {
@@ -46,15 +47,11 @@ namespace SimpleEchoBot.Dialogs
             string CategoryName = answer.Text;
             if (CategoryName != null)
             {
-                message.Text = "Muchas gracias, fue un placer ayudarlo.";
-                await context.PostAsync(message);
+                PeopeAppService searchService = new PeopeAppService();
+                var vote = await searchService.CreateSurvey(CategoryName);               
             }
-            else
-            {
-
-                await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "La opción {0} no es válida. Por favor intente de nuevo", CategoryName));
-               
-            }
+            message.Text = "Muchas gracias, fue un placer ayudarlo.";
+            await context.PostAsync(message);
             Session.Greet = false;
             context.Done<object>(null);
         }
