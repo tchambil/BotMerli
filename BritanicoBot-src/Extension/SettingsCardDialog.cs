@@ -131,7 +131,7 @@ namespace SimpleEchoBot.Extension
                 Buttons = new List<CardAction>()
                 {
                     new CardAction(ActionTypes.ImBack, "SOLUCIONES TI", value:ITOptions),
-                         new CardAction(ActionTypes.ImBack, ITPreguntaFrecuentes, value:ITPreguntaFrecuentes)
+                    //     new CardAction(ActionTypes.ImBack, ITPreguntaFrecuentes, value:ITPreguntaFrecuentes)
 
                 }
             };

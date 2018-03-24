@@ -129,7 +129,7 @@ namespace SimpleEchoBot.Dialogs
         }
         private async Task SelectedConfirmTI(IDialogContext context)
         {
-            PromptDialog.Confirm(context, ConfirmedTI, "¿Deseas buscar otra solución TI?");
+            PromptDialog.Confirm(context, ConfirmedTI, "¿Te puedo ayudar en algo más?");
         }
         private async Task SelectedConfirm(IDialogContext context)
         {
