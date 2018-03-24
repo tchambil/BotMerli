@@ -214,7 +214,7 @@ namespace SimpleEchoBot.Dialogs
                       message.Attachments.Add(SettingsCardDialog.CardComputerOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 case SettingsCardDialog.OPPcPrint:
                     message.Attachments.Add(SettingsCardDialog.CardPCPrintOptions().ToAttachment());
@@ -227,13 +227,13 @@ namespace SimpleEchoBot.Dialogs
                        message.Attachments.Add(SettingsCardDialog.CardTickesOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 case SettingsCardDialog.OPProyector:
                      message.Attachments.Add(SettingsCardDialog.CardProyectorOptions().ToAttachment());
                     await context.PostAsync(message);
                     Thread.Sleep(4000);
-                    await SelectedConfirm(context);
+                    await SelectedConfirmTI(context);
                     break;
                 case SettingsCardDialog.OPConnectivity:
                     message.Attachments.Add(SettingsCardDialog.CardConnectivityOptions().ToAttachment());
