@@ -24,7 +24,7 @@ namespace SimpleEchoBot.Dialogs
             {
                 Session.Greet = true;
                 var message = context.MakeMessage();                
-                message.Text = $"¡Hola, soy Oliver! el asistente virtual del BRITÁNICO. Permíteme ayudarte en los siguientes temas:";
+                message.Text = $"Permíteme ayudarte en los siguientes temas:";
                 await context.PostAsync(message);
                 await ResumeAfter(context);
                
@@ -100,8 +100,10 @@ namespace SimpleEchoBot.Dialogs
                         context.Call(new QADialog(), ResumeAfterOptionDialog);
                         break;
                     default:
-                         await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
+                        //  await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
+                        Session.Greet = false;
                         await StartAsync(context);
+                        //context.Done(CategoryName);
                         break;
 
                 } 
@@ -109,9 +111,12 @@ namespace SimpleEchoBot.Dialogs
             }
             else
             {
-               
-                await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
-                context.Wait(this.MessageReceivedAsync);
+
+                // await context.PostAsync(string.Format(CultureInfo.CurrentCulture, "No entendí lo que quisiste decir.", CategoryName));
+                // context.Wait(this.MessageReceivedAsync);
+                Session.Greet = false;
+                await StartAsync(context);
+                //context.Done(CategoryName);
             }
         }
 

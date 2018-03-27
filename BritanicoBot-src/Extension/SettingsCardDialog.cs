@@ -19,7 +19,7 @@ namespace SimpleEchoBot.Extension
         public const string InTDocsfrecuent = "Documentos frecuentes";
         public const string DocsSoliVaca = "Solicitud de Vacaciones";
         public const string DocsSoliBeca = "Solicitud de Becas";
-        public const string DocsFormatUser = "Formato de Admnistración de usuarios";
+        public const string DocsFormatUser = "Formato de Administración de usuarios";
         public const string DocsSoliAdelant = "Solicitud de Adelanto de remuneraciones";
         public const string InTHelpDesk = "Mesa de ayuda";
         //Information People
